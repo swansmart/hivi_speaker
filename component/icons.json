@@ -1,0 +1,5 @@
+{
+  "services": {
+      "add_group": {"service": "mdi:account-multiple-plus"}
+  }
+}

@@ -24,10 +24,5 @@
         }
       }
     }
-  },
-  "entity":{
-    "salave_switch":{
-      "name":"{devicename} as child device"
-    }
   }
 }

@@ -200,7 +200,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+Please see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Support
 

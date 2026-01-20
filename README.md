@@ -1,92 +1,224 @@
-# HiViSpeaker
+# HiVi Speaker Integration
 
+A Home Assistant custom integration for seamless control of HiVi Multi-Room speaker systems, enabling whole-home audio synchronization.
 
+![multi_room](https://swan-smart-static-2.swanspeakers.com/pic1/multi_room_1.png)
 
-## Getting started
+## ✨ Features
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- **Auto-Discovery**: Automatically detects all HiVi Multi-Room speakers on your local network
+- **Multi-Room Sync**: Select multiple speakers for synchronized playback throughout your home
+- **Seamless Control**: Easily control all HiVi speakers through the Home Assistant interface
+- **Configuration Flow**: User-friendly setup wizard
+- **Entity Management**: Creates media player entities for each speaker with play/pause/volume controls
+- **Supported Models**: Compatible with HiVi M5A, M3AMKIII, H6, H8, H5MKII, M500, M300MKII, M200MKII(WiFi), M200D, M100MKIII, M80W, MT1-MAX, MT1-MINI, T200MKII, MS2 series
+- **Compatibility**: Works with all HiVi speakers supporting Multi-Room functionality
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+## 📦 Installation
 
-## Add your files
+### Method 1: HACS (Recommended)
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+1. Open HACS in your Home Assistant instance
+2. Click on "Integrations"
+3. Click the three dots in the top-right corner
+4. Select "Custom repositories"
+5. Add the repository URL: `https://github.com/swansmart/hivi_speaker`
+6. Set the category to "Integration"
+7. Click "Add"
+8. Search for "HiVi Speaker" in the integration list
+9. Click "Install"
+10. Restart Home Assistant
+
+### Method 2: Manual Installation
+
+1. Download the latest https://github.com/swansmart/hivi_speaker/releases
+2. Copy the `custom_components/hivi_speaker` folder to your Home Assistant configuration directory
+3. Restart Home Assistant
+4. Go to **Settings** > **Devices & Services**
+5. Click **+ Add Integration**
+6. Search for "HiVi Speaker"
+
+## ⚙️ Configuration
+
+### Initial Setup
+
+1. After restarting Home Assistant, navigate to **Settings** > **Devices & Services**
+2. Click **+ Add Integration** in the bottom-right corner
+3. Search for and select **HiVi Speaker**
+4. The integration will automatically scan your network for HiVi speakers
+5. Follow the configuration wizard to complete setup
+
+### Automatic Discovery
+
+The integration automatically scans your local network for available HiVi Multi-Room speakers. Discovered devices will appear in the integration page.
+
+## 🎵 Usage
+
+### Basic Controls
+
+The integration creates a media player entity for each discovered HiVi speaker. You can control them through:
+
+- **Play/Pause**: Control playback on individual speakers
+- **Volume Control**: Adjust volume for each speaker independently
+- **Media Selection**: Choose and play different media files to connected speakers
+- **Sync Management**: Select one or more other speakers as synchronized "child" speakers for multi-room playback
+
+### Multi-Room Synchronization
+
+**Configuration Interface:**
+Each HiVi speaker entity in Home Assistant includes a configuration area where you can manage synchronization settings. In this area, you'll find:
+
+- A switch list of all other available HiVi speakers in your network
+- Each switch represents a potential "child" speaker
+- Toggle the switch ON to establish a synchronization connection
+- Toggle the switch OFF to disconnect the synchronization
+
+**How to Set Up Synchronization:**
+
+1. Navigate to the HiVi speaker entity in Home Assistant
+2. Expand the configuration section
+3. You'll see a list of switches, each labeled with another speaker's name
+4. Toggle ON the switches for speakers you want to synchronize with the current speaker
+5. The selected speakers will immediately become "child" speakers of the current "master" speaker
+6. Any media played on the master speaker will now synchronize to all connected child speakers
+
+**Connection Behavior:**
+- **When switch is ON**: Establishes a real-time connection, and the child speaker starts playing synchronized audio
+- **When switch is OFF**: Disconnects the synchronization, and the child speaker returns to standalone mode
+- **Dynamic Changes**: You can add or remove synchronized speakers at any time without interrupting playback
+- **Multiple Masters**: Each speaker can independently control its own set of child speakers
+
+**Visual Example:**
+```
+Living Room Speaker Configuration
+├── [✓] Kitchen Speaker   ← Switch ON (synchronized)
+├── [✓] Bedroom Speaker   ← Switch ON (synchronized)
+├── [ ] Bathroom Speaker  ← Switch OFF (not synchronized)
+└── [ ] Office Speaker    ← Switch OFF (not synchronized)
+```
+
+**Benefits:**
+- **Simple Toggle Interface**: Easy ON/OFF control for synchronization
+- **Real-time Connection**: Connections are established immediately when toggled
+- **Independent Control**: Each speaker maintains its own sync configuration
+- **Flexible Setup**: Create different sync groups for different scenarios
+- **No Disruption**: Change sync settings without interrupting ongoing playback
+
+**Usage Tips:**
+- Create a "whole house" group by selecting the master living room speaker and toggling ON all other speakers
+- For parties, set up the main speaker to sync with kitchen and patio speakers
+- In the morning, synchronize bedroom and bathroom speakers for a morning routine
+- Easily change configurations based on time of day or activity
+
+**Important Notes:**
+- The master speaker must be playing media for synchronization to occur
+- You can have multiple independent sync groups simultaneously
+- All synchronized speakers must be on the same local network
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**Q: No speakers are found**
+- Ensure HiVi speakers are powered on and connected to the same local network as Home Assistant
+- Check firewall settings to ensure mDNS (port 5353/UDP) is allowed
+- Restart both Home Assistant and your speakers
+- Verify that your HiVi speakers support Multi-Room functionality
+
+**Q: Speakers are out of sync during playback**
+- Ensure all speakers have the latest firmware installed
+- Check network latency; wired connections are recommended for better synchronization
+- Reduce the number of speakers in the synchronized group
+- Try increasing buffer time in advanced settings
+
+**Q: Integration fails to load**
+- Check the Home Assistant logs for error messages
+- Verify all files are correctly installed in the `custom_components` directory
+- Try reinstalling the integration
+- Ensure you're using a supported Home Assistant version
+
+**Q: Speakers disconnect frequently**
+- Check Wi-Fi signal strength
+- Ensure your router can handle the number of connected devices
+- Consider assigning static IP addresses to your speakers
+- Update your router's firmware
+
+### Enabling Debug Logs
+
+Add the following to your `configuration.yaml` for detailed logging:
+
+```yaml
+# configuration.yaml
+logger:
+  default: warning
+  logs:
+    custom_components.hivi_speaker: debug
+```
+
+After adding this configuration, restart Home Assistant and check the logs for detailed information.
+
+## 📱 Supported Devices
+
+- All HiVi speakers with Multi-Room functionality
+- HiVi audio devices supporting mDNS discovery
+
+## 🐛 Reporting Issues
+
+If you encounter any problems or have feature suggestions:
+
+1. First check the #common-issues section above
+2. Search existing https://github.com/swansmart/hivi_speaker/issues to see if your problem has already been reported
+3. Create a new issue with the following information:
+   - Detailed description of the problem
+   - Steps to reproduce
+   - Home Assistant version
+   - Integration version
+   - Logs (with debug mode enabled if possible)
+   - Speaker model and firmware version
+
+## 🤝 Contributing
+
+Contributions are welcome! Here's how you can help:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/swansmart/hivi_speaker.git
+
+# Create a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 ```
-cd existing_repo
-git remote add origin http://172.18.8.190:9980/swansmart/hivi_speaker.git
-git branch -M main
-git push -uf origin main
-```
 
-## Integrate with your tools
+## 📄 License
 
-- [ ] [Set up project integrations](http://172.18.8.190:9980/swansmart/hivi_speaker/-/settings/integrations)
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Collaborate with your team
+## 📞 Support
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+- **Documentation**: https://github.com/swansmart/hivi_speaker
+- **Issue Tracker**: https://github.com/swansmart/hivi_speaker/issues
+- **Changelog**: See CHANGELOG.md
+- **Discussions**: Visit our https://github.com/swansmart/hivi_speaker/discussions
 
-## Test and Deploy
+## Version History
 
-Use the built-in continuous integration in GitLab.
+- **0.1.0** (2024-01-20)
+  - Initial release
+  - Automatic discovery of HiVi Multi-Room speakers
+  - Basic playback controls (play, pause, volume)
+  - Multi-room synchronization support
+  - Configuration flow implementation
+  - Media player entity creation for each speaker
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+---
 
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+**Note**: Before using this integration, ensure your HiVi speakers have Multi-Room functionality enabled and are connected to your network. For optimal performance, we recommend using a stable network connection and keeping your speakers' firmware up to date.

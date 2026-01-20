@@ -1,0 +1,33 @@
+{
+  "config": {
+    "abort": {
+      "single_instance_allowed": "Only a single configuration of HiVi Speaker is allowed."
+    },
+    "step": {
+    }
+  },
+  "options":{
+    "step":{
+      "init": {
+        "description": "Confirm to refresh device discovery?",
+        "data":{
+          "confirm_refresh":"Confirm to refresh"
+        },
+        "data_description":{
+        }
+      },
+      "success": {
+        "description": "✅ Device discovery has begun, and new devices will be automatically added",
+        "data_description":{
+        },
+        "data":{
+        }
+      }
+    }
+  },
+  "entity":{
+    "salave_switch":{
+      "name":"{devicename} as child device"
+    }
+  }
+}

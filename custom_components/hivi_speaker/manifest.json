@@ -3,7 +3,7 @@
     "name": "HiVi Speaker",
     "documentation": "https://github.com/swansmart/hivi_speaker",
     "issue_tracker": "https://github.com/swansmart/hivi_speaker/issues",
-    "dependencies": [],
+    "dependencies": ["dlna_dms"],
     "config_flow": true,
     "codeowners": ["@swansmart"],
     "version": "0.1.0",

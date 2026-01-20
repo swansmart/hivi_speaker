@@ -1,5 +1,7 @@
 # HiVi Speaker Integration
 
+[English](./README.md) | [简体中文](./README_zh.md)
+
 A Home Assistant custom integration for seamless control of HiVi Multi-Room speaker systems, enabling whole-home audio synchronization.
 
 ![multi_room](https://swan-smart-static-2.swanspeakers.com/pic1/multi_room_1.png)
@@ -66,7 +68,7 @@ The integration creates a media player entity for each discovered HiVi speaker. 
 ### Multi-Room Synchronization
 
 **Configuration Interface:**
-Each HiVi speaker entity in Home Assistant includes a configuration area where you can manage synchronization settings. In this area, you'll find:
+Each HiVi speaker device in Home Assistant includes a configuration area where you can manage synchronization settings. In this area, you'll find:
 
 - A switch list of all other available HiVi speakers in your network
 - Each switch represents a potential "child" speaker
@@ -75,7 +77,7 @@ Each HiVi speaker entity in Home Assistant includes a configuration area where y
 
 **How to Set Up Synchronization:**
 
-1. Navigate to the HiVi speaker entity in Home Assistant
+1. Navigate to the HiVi speaker device in Home Assistant
 2. Expand the configuration section
 3. You'll see a list of switches, each labeled with another speaker's name
 4. Toggle ON the switches for speakers you want to synchronize with the current speaker
@@ -111,7 +113,7 @@ Living Room Speaker Configuration
 - Easily change configurations based on time of day or activity
 
 **Important Notes:**
-- The master speaker must be playing media for synchronization to occur
+- Synchronization connections can be established at any time, regardless of playback status
 - You can have multiple independent sync groups simultaneously
 - All synchronized speakers must be on the same local network
 
@@ -127,9 +129,8 @@ Living Room Speaker Configuration
 
 **Q: Speakers are out of sync during playback**
 - Ensure all speakers have the latest firmware installed
-- Check network latency; wired connections are recommended for better synchronization
+- Check network latency; it is recommended to optimize network connection for better synchronization performance.
 - Reduce the number of speakers in the synchronized group
-- Try increasing buffer time in advanced settings
 
 **Q: Integration fails to load**
 - Check the Home Assistant logs for error messages

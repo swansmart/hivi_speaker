@@ -211,7 +211,7 @@ source venv/bin/activate  # Windows 上：venv\Scripts\activate
 
 ## 版本历史
 
-- **0.1.0** (2024-01-20)
+- **0.1.0** (2026-01-20)
   - 初始发布
   - 自动发现 HiVi 多房间音箱
   - 基本播放控制（播放、暂停、音量）

@@ -208,7 +208,6 @@ Please see the [LICENSE](LICENSE) file for details.
 - **Documentation**: https://github.com/swansmart/hivi_speaker
 - **Issue Tracker**: https://github.com/swansmart/hivi_speaker/issues
 - **Changelog**: See CHANGELOG.md
-- **Discussions**: Visit our https://github.com/swansmart/hivi_speaker/discussions
 
 ## Version History
 

@@ -208,7 +208,6 @@ source venv/bin/activate  # Windows 上：venv\Scripts\activate
 - **文档**：https://github.com/swansmart/hivi_speaker
 - **问题跟踪器**：https://github.com/swansmart/hivi_speaker/issues
 - **变更日志**：参见 CHANGELOG.md
-- **讨论**：访问我们的 https://github.com/swansmart/hivi_speaker/discussions
 
 ## 版本历史
 

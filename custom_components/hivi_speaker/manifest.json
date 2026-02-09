@@ -1,12 +1,11 @@
 {
-    "domain": "hivi_speaker",
-    "name": "HiVi Speaker",
-    "codeowners": ["@swansmart"],
-    "config_flow": true,
-     "dependencies": ["dlna_dms"],
-     "requirements": ["hivico>=0.1.0"],
-    "documentation": "https://github.com/swansmart/hivi_speaker",
-    "iot_class": "local_polling",
-    "issue_tracker": "https://github.com/swansmart/hivi_speaker/issues",
-    "version": "0.1.0"
-}
+    "domain":"hivi_speaker",
+    "name":"HiVi Speaker",
+    "codeowners":["@swansmart"],
+    "config_flow":true,
+    "dependencies":["dlna_dms"],
+    "requirements":["hivico>=0.1.0"],
+    "documentation":"https://github.com/swansmart/hivi_speaker",
+    "iot_class":"local_polling",
+    "issue_tracker":"https://github.com/swansmart/hivi_speaker/issues",
+    "version":"0.1.1"}

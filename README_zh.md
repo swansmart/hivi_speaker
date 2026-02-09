@@ -211,6 +211,8 @@ source venv/bin/activate  # Windows 上：venv\Scripts\activate
 
 ## 版本历史
 
+- **0.1.1** (2026-02-09)
+  - 改为使用独立的 `hivico` PyPI 库与 HiVi API 通信；面向用户的功能与行为不变
 - **0.1.0** (2026-01-20)
   - 初始发布
   - 自动发现 HiVi 多房间音箱

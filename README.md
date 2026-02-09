@@ -222,6 +222,8 @@ Please see the [LICENSE](LICENSE) file for details.
 
 ## Version History
 
+- **0.1.1** (2026-02-09)
+  - Use external `hivico` PyPI library for HiVi API; no change to user-facing behavior
 - **0.1.0** (2026-01-20)
   - Initial release
   - Automatic discovery of HiVi Multi-Room speakers

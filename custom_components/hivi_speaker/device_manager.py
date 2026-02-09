@@ -31,7 +31,7 @@ import async_timeout
 from typing import Set
 from .discovery_scheduler import HIVIDiscoveryScheduler
 from .group_coordinator import HIVIGroupCoordinator
-from .hivico import HivicoClient
+from hivico import HivicoClient
 from .device_data_registry import DeviceDataRegistry
 
 _LOGGER = logging.getLogger(__name__)

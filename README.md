@@ -189,14 +189,25 @@ Contributions are welcome! Here's how you can help:
 
 ### Development Setup
 
+See [DEVELOPING.md](DEVELOPING.md) for full instructions.
+
+**Quick start** (with hivico in sibling directory `../hivico`):
+
 ```bash
 # Clone the repository
 git clone https://github.com/swansmart/hivi_speaker.git
+cd hivi_speaker  # or hivi_speaker_github
 
-# Create a virtual environment
+# Create virtual environment and install dependencies
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+venv\Scripts\activate   # Windows
+# source venv/bin/activate  # Linux/macOS
 
+# Install hivico from local project (editable)
+pip install -e ../hivico
+
+# Verify
+python -c "from hivico import HivicoClient; print('hivico OK')"
 ```
 
 ## 📄 License

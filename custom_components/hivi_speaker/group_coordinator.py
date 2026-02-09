@@ -9,9 +9,7 @@ from homeassistant.helpers.dispatcher import async_dispatcher_connect
 
 from .const import DOMAIN
 from .device import HIVIDevice
-from .hivico import (
-    HivicoClient,
-)
+from hivico import HivicoClient
 
 _LOGGER = logging.getLogger(__name__)
 

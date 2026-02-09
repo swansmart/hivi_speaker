@@ -1,0 +1,7 @@
+# Development dependencies for hivi_speaker integration
+# Install with: pip install -r requirements-dev.txt
+#
+# Prerequisite: hivico must be in a sibling directory (../hivico)
+# If your layout differs, install hivico manually: pip install -e /path/to/hivico
+
+-e ../hivico
